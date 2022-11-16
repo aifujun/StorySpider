@@ -3,10 +3,8 @@ import traceback
 
 from tqdm import tqdm
 
-from src.common.logger import get_logger
+from common.logger import logger
 from spider.base.spider import Spider
-
-log = get_logger()
 
 
 class NovelSpider(Spider):

@@ -1,9 +1,25 @@
-# Author: aifujun
-# Project: GetNovel
-# File: scripts/utility.py
-# Date: 2022-03-16 21:11
-# Note:
+
 import time
+
+from functools import wraps
+
+from common.exception import HttpCodeException
+
+
+def retry(retry_count: int = 5, interval: int = 1):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            for i in range(retry_count):
+                try:
+                    res = func(*args, **kwargs)
+                    return res
+                except HttpCodeException:
+                    time.sleep(interval)
+                    continue
+            return None
+        return wrapper
+    return decorator
 
 
 def get_time():
@@ -28,7 +44,5 @@ def get_headers():
 
 
 if __name__ == '__main__':
-    a = [(1,2), (90, 8)]
-    for i, m in enumerate(a):
-        print(i, m)
-    print(get_time())
+    a = [(1, 2), (90, 8)]
+
