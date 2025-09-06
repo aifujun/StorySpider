@@ -1,13 +1,15 @@
 
 import random
+import re
 
 import requests
 from lxml import etree
 
-from common.errCode import HttpStatusCode
-from common.exception import HttpCodeException
+from common.error.error_code import HttpStatusCode
+from common.error.exceptions import HttpCodeException
 from common.logger import logger
-from scripts.utility import retry
+from common.regular_expression import RegExpression
+from common.utils.decorator import retry
 
 
 class Spider(object):
@@ -19,6 +21,10 @@ class Spider(object):
             'User-Agent': "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:65.0) Gecko/20100101 Firefox/65.0"
         }
         self.proxies = random.choice(proxies) if proxies else proxies
+
+    @staticmethod
+    def extract_url_from_string(string: str) -> list:
+        return RegExpression.url_regexp.findall(string)
 
     @retry()
     def get_html(self, url: str, timeout: int = 180):
@@ -39,6 +45,15 @@ class Spider(object):
         html_tree = etree.HTML(response.text)
         logger.info(f"Get url: <{url}> html page successful.")
         return html_tree
+
+    @retry()
+    def get(self, url: str, timeout: int = 180):
+        response = requests.get(url, headers=self.headers, timeout=timeout, proxies=self.proxies)
+        if response.status_code != HttpStatusCode.OK.value:
+            logger.error(f"Get url: <{url}> html page failed, errorCode: {response.status_code}.")
+            raise HttpCodeException
+        response.encoding = response.apparent_encoding
+        return response
 
     def get_book_info(self, *args, **kwargs) -> None: ...
 

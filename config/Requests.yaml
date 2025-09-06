@@ -1,0 +1,20 @@
+version: "1.0.0"
+
+info:
+  title: "Request body configuration"
+  description: ""
+
+douyin:
+  indexUrl: "https://www.douyin.com/"
+  baseUrl: "https://www.douyin.com/{type}/{type_id}"
+  userProfileApi: "https://www.douyin.com/aweme/v1/web/user/profile/other/?aid={aid}&sec_user_id={sec_user_id}&X-Bogus={x_bogus}"
+  videoDataApi: "https://www.douyin.com/aweme/v1/web/aweme/detail/?aid={aid}&aweme_id={aweme_id}&X-Bogus={x_bogus}"
+  userDataApi: "https://www.douyin.com/aweme/v1/web/aweme/post/?sec_user_id={sec_user_id}&count={count}&max_cursor={max_cursor}&aid={aid}"
+
+  aid: 6383
+
+  Cookies: "msToken={ms_token};
+            odin_tt=324fb4ea4a89c0c05827e18a1ed9cf9bf8a17f7705fcc793fec935b637867e2a5a9b8168c885554d029919117a18ba69;
+            ttwid=1%7CWBuxH_bhbuTENNtACXoesI5QHV2Dt9-vkMGVHSRRbgY%7C1677118712%7C1d87ba1ea2cdf05d80204aea2e1036451dae638e7765b8a4d59d87fa05dd39ff;
+            bd_ticket_guard_client_data=eyJiZC10aWNrZXQtZ3VhcmQtdmVyc2lvbiI6MiwiYmQtdGlja2V0LWd1YXJkLWNsaWVudC1jc3IiOiItLS0tLUJFR0lOIENFUlRJRklDQVRFIFJFUVVFU1QtLS0tLVxyXG5NSUlCRFRDQnRRSUJBREFuTVFzd0NRWURWUVFHRXdKRFRqRVlNQllHQTFVRUF3d1BZbVJmZEdsamEyVjBYMmQxXHJcbllYSmtNRmt3RXdZSEtvWkl6ajBDQVFZSUtvWkl6ajBEQVFjRFFnQUVKUDZzbjNLRlFBNUROSEcyK2F4bXAwNG5cclxud1hBSTZDU1IyZW1sVUE5QTZ4aGQzbVlPUlI4NVRLZ2tXd1FJSmp3Nyszdnc0Z2NNRG5iOTRoS3MvSjFJc3FBc1xyXG5NQ29HQ1NxR1NJYjNEUUVKRGpFZE1Cc3dHUVlEVlIwUkJCSXdFSUlPZDNkM0xtUnZkWGxwYmk1amIyMHdDZ1lJXHJcbktvWkl6ajBFQXdJRFJ3QXdSQUlnVmJkWTI0c0RYS0c0S2h3WlBmOHpxVDRBU0ROamNUb2FFRi9MQnd2QS8xSUNcclxuSURiVmZCUk1PQVB5cWJkcytld1QwSDZqdDg1czZZTVNVZEo5Z2dmOWlmeTBcclxuLS0tLS1FTkQgQ0VSVElGSUNBVEUgUkVRVUVTVC0tLS0tXHJcbiJ9;
+            sessionid=c6bb98799c00f7e99f00dafbecea0920;"
